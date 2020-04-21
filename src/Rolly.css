@@ -1,0 +1,13 @@
+.hide-in-large {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hide-in-large {
+    display: inline-flex;
+  }
+
+  .hide-in-small {
+    display: none;
+  }
+}

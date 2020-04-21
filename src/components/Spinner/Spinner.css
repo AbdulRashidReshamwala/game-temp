@@ -1,0 +1,31 @@
+/* #spin {
+  overflow: hidden;
+}
+
+div.slide-up {
+  height: 300px;
+  overflow: hidden;
+}
+
+div.slide-up div.inner {
+  animation: slide-up 10s;
+  margin-top: 0%;
+} */
+
+#blur {
+  filter: blur(6px);
+
+}
+
+
+
+
+@keyframes slide-up {
+  from {
+    margin-top: 100%;
+  }
+
+  to {
+    margin-top: 0%;
+  }
+}
