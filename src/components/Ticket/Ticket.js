@@ -25,6 +25,8 @@ export default function Ticket({ data, putData }) {
                 borderImageSlice: "1",
               }}
             />
+            <br />
+            <br />
             <TicketCol key={id} data={row} fun={putData} colId={id}></TicketCol>
           </Col>
         ))}

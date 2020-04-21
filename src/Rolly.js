@@ -17,63 +17,68 @@ export default function Rolly() {
   const [spinning, setSpinning] = useState(true);
   const answers = [
     { number: 20, row: 4 },
-    { number: 5, row: 0 },
-    { number: 7, row: 2 },
-    { number: 30, row: 4 },
-    { number: 9, row: 4 },
-    { number: 8, row: 3 },
-    { number: 1, row: 1 },
-    { number: 13, row: 3 },
-    { number: 4, row: 4 },
-    { number: 11, row: 1 },
-    { number: 21, row: 0 },
-    { number: 3, row: 3 },
-    { number: 23, row: 2 },
-    { number: 25, row: 4 },
-    { number: 24, row: 3 },
-    { number: 6, row: 1 },
-    { number: 2, row: 2 },
-    { number: 27, row: 1 },
-    { number: 18, row: 3 },
-    { number: 14, row: 4 },
-    { number: 22, row: 1 },
-    { number: 12, row: 2 },
-    { number: 15, row: 0 },
-    { number: 26, row: 0 },
-    { number: 16, row: 1 },
-    { number: 17, row: 2 },
-    { number: 28, row: 2 },
-    { number: 29, row: 3 },
-    { number: 10, row: 0 },
+    // { number: 5, row: 0 },
+    { number: 34, row: 5 },
+    { number: 32, row: 5 },
+    // { number: 7, row: 2 },
+    // { number: 30, row: 4 },
+    // { number: 9, row: 4 },
+    // { number: 8, row: 3 },
+    // { number: 1, row: 1 },
+    // { number: 13, row: 3 },
+    // { number: 4, row: 4 },
+    // { number: 11, row: 1 },
+    // { number: 21, row: 0 },
+    // { number: 3, row: 3 },
+    // { number: 23, row: 2 },
+    // { number: 25, row: 4 },
+    // { number: 24, row: 3 },
+    // { number: 6, row: 1 },
+    // { number: 2, row: 2 },
+    // { number: 27, row: 1 },
+    // { number: 18, row: 3 },
+    // { number: 14, row: 4 },
+    // { number: 22, row: 1 },
+    // { number: 12, row: 2 },
+    // { number: 15, row: 0 },
+    // { number: 26, row: 0 },
+    // { number: 16, row: 1 },
+    // { number: 17, row: 2 },
+    // { number: 28, row: 2 },
+    // { number: 29, row: 3 },
+    // { number: 10, row: 0 },
+    { number: 42, row: 5 },
+    { number: 55, row: 5 },
+    { number: 45, row: 5 },
+    { number: 35, row: 5 },
+    { number: 57, row: 5 },
+    { number: 78, row: 5 },
+    { number: 49, row: 5 },
+    { number: 90, row: 5 },
   ];
 
   const [data, setData] = useState(Array(5).fill(Array(12).fill(99)));
   const [index, setIndex] = useState(0);
   const [active, setActive] = useState(true);
-  //   const [text, setText] = useState("");
 
   useEffect(() => {
-    setTimeout(() => {
-      if (index < answers.length - 1) {
-        setIndex(index + 1);
+    if (index < answers.length - 1) {
+      setTimeout(() => {
         setSpinning(true);
-        setActive(false);
-      } else {
-        setSpinning(false);
-      }
-    }, 5000);
-  }, [index, answers]);
-  useEffect(() => {
+        setIndex(index + 1);
+      }, 5000);
+    }
     setTimeout(() => {
-      if (index < answers.length - 1) {
-        setSpinning(false);
-        setActive(true);
-      }
+      setActive(false);
+    }, 5000);
+    setTimeout(() => {
+      setSpinning(false);
+      setActive(true);
     }, 2000);
-  }, [index, answers]);
+  }, [index, answers.length]);
 
   const verifyPlacement = (rowId, colId, value) => {
-    if (value.row !== rowId) {
+    if (value.row !== rowId && value.row !== 5) {
       alert(`${value.row + 1} is active but ${rowId + 1} was clicked`);
       return false;
     }
@@ -90,8 +95,6 @@ export default function Rolly() {
     bottomElements = bottomElements.filter((ele) => {
       return ele !== 99;
     });
-    console.log(topElements);
-    console.log(bottomElements);
     for (let i = 0; i < topElements.length; i++) {
       if (topElements[i] > value) {
         return false;
@@ -106,7 +109,7 @@ export default function Rolly() {
   };
 
   const putData = (colId, rowId) => {
-    if (verifyPlacement(rowId, colId, answers[index]) && active) {
+    if (active && verifyPlacement(rowId, colId, answers[index])) {
       console.log("added");
       let n = [...data];
       let j = [...n[rowId]];
@@ -123,79 +126,12 @@ export default function Rolly() {
 
   return (
     <div style={{ minHeight: "100%", textAlign: "center" }}>
-      <Container>
-        <div className="d-lg-none d-md-none">
-          <Row>
-            <Col className="left">
-              <Spinner
-                spining={spinning}
-                result={answers[index].row}
-                speed={100}
-                data={images}
-                draw={(item) => (
-                  <Image
-                    fluid
-                    src={`${window.location.origin}/assets/rolly/images/${item}`}
-                    style={{
-                      height: "10vh",
-                      width: "10vh",
-                    }}
-                  />
-                )}
-              ></Spinner>
-            </Col>
-            <Col>
-              <Spinner
-                spining={spinning}
-                result={index}
-                speed={100}
-                data={answers}
-                draw={(item) => (
-                  <div
-                    style={{
-                      height: "10vh",
-                      width: "10vh",
-                      lineHeight: "12vh",
-                      textAlign: "center",
-                      color: "orange",
-                      backgroundColor: "aliceblue",
-
-                      fontFamily: "Dotted",
-                      fontSize: "3rem",
-                    }}
-                  >
-                    {item.number}
-                  </div>
-                )}
-              ></Spinner>
-            </Col>
-          </Row>
-        </div>
-        <Row>
-          <Col className="left" sm={12} md={6} style={{ margin: "2.4rem" }}>
-            <Ticket data={data} putData={putData} />
-          </Col>
-          <Col sm={12} md={4} style={{ margin: "2.4rem" }}>
-            <Row>
-              <Jumbotron
-                className="rules"
-                style={{ width: "100%", textAlign: "left" }}
-              >
-                <h3>Rules</h3>
-                <p>
-                  <ul>
-                    <li>Rules</li>
-                    <li>Rules</li>
-                    <li>Rules</li>
-                    <li>Rules</li>
-                    <li>Rules</li>
-                  </ul>
-                </p>
-              </Jumbotron>
-            </Row>
-            <div className="hide-in-small">
+      {index >= 0 ? (
+        <>
+          <Container>
+            <div className="d-lg-none d-md-none">
               <Row>
-                <Col>
+                <Col className="left">
                   <Spinner
                     spining={spinning}
                     result={answers[index].row}
@@ -206,8 +142,8 @@ export default function Rolly() {
                         fluid
                         src={`${window.location.origin}/assets/rolly/images/${item}`}
                         style={{
-                          height: "12vh",
-                          width: "100%",
+                          height: "10vh",
+                          width: "10vh",
                         }}
                       />
                     )}
@@ -222,15 +158,15 @@ export default function Rolly() {
                     draw={(item) => (
                       <div
                         style={{
-                          height: "12vh",
-                          width: "100%",
+                          height: "10vh",
+                          width: "10vh",
                           lineHeight: "12vh",
                           textAlign: "center",
                           color: "orange",
                           backgroundColor: "aliceblue",
 
                           fontFamily: "Dotted",
-                          fontSize: "5rem",
+                          fontSize: "3rem",
                         }}
                       >
                         {item.number}
@@ -240,9 +176,82 @@ export default function Rolly() {
                 </Col>
               </Row>
             </div>
-          </Col>
-        </Row>
-      </Container>
+            <Row>
+              <Col className="left" sm={12} md={6} style={{ margin: "2.4rem" }}>
+                <Ticket data={data} putData={putData} />
+              </Col>
+              <Col sm={12} md={4} style={{ margin: "2.4rem" }}>
+                <Row>
+                  <Jumbotron
+                    className="rules"
+                    style={{ width: "100%", textAlign: "left" }}
+                  >
+                    <h3>Rules</h3>
+                    <p>
+                      <ul>
+                        <li>Rules</li>
+                        <li>Rules</li>
+                        <li>Rules</li>
+                        <li>Rules</li>
+                        <li>Rules</li>
+                      </ul>
+                    </p>
+                  </Jumbotron>
+                </Row>
+                <div className="hide-in-small">
+                  <Row>
+                    <Col>
+                      <Spinner
+                        spining={spinning}
+                        result={answers[index].row}
+                        speed={100}
+                        data={images}
+                        draw={(item) => (
+                          <Image
+                            fluid
+                            src={`${window.location.origin}/assets/rolly/images/${item}`}
+                            style={{
+                              height: "12vh",
+                              width: "100%",
+                            }}
+                          />
+                        )}
+                      ></Spinner>
+                    </Col>
+                    <Col>
+                      <Spinner
+                        spining={spinning}
+                        result={index}
+                        speed={100}
+                        data={answers}
+                        draw={(item) => (
+                          <div
+                            style={{
+                              height: "12vh",
+                              width: "100%",
+                              lineHeight: "12vh",
+                              textAlign: "center",
+                              color: "orange",
+                              backgroundColor: "aliceblue",
+
+                              fontFamily: "Dotted",
+                              fontSize: "5rem",
+                            }}
+                          >
+                            {item.number}
+                          </div>
+                        )}
+                      ></Spinner>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </>
+      ) : (
+        <h1>loading</h1>
+      )}
     </div>
   );
 }
