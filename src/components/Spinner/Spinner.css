@@ -1,31 +1,130 @@
-/* #spin {
-  overflow: hidden;
+.led-box {
+  height: 30px;
+  width: 25%;
+  margin: 10px 0;
+  float: left;
 }
 
-div.slide-up {
-  height: 300px;
-  overflow: hidden;
+.led-box p {
+  font-size: 12px;
+  text-align: center;
+  margin: 1em;
 }
 
-div.slide-up div.inner {
-  animation: slide-up 10s;
-  margin-top: 0%;
-} */
+.led-yellow {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #FF0;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+  -webkit-animation: blinkYellow 1s infinite;
+  -moz-animation: blinkYellow 1s infinite;
+  -ms-animation: blinkYellow 1s infinite;
+  -o-animation: blinkYellow 1s infinite;
+  animation: blinkYellow 1s infinite;
+}
+
+@-webkit-keyframes blinkYellow {
+  from {
+    background-color: #FF0;
+  }
+
+  50% {
+    background-color: #AA0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+  }
+
+  to {
+    background-color: #FF0;
+  }
+}
+
+@-moz-keyframes blinkYellow {
+  from {
+    background-color: #FF0;
+  }
+
+  50% {
+    background-color: #AA0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+  }
+
+  to {
+    background-color: #FF0;
+  }
+}
+
+@-ms-keyframes blinkYellow {
+  from {
+    background-color: #FF0;
+  }
+
+  50% {
+    background-color: #AA0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+  }
+
+  to {
+    background-color: #FF0;
+  }
+}
+
+@-o-keyframes blinkYellow {
+  from {
+    background-color: #FF0;
+  }
+
+  50% {
+    background-color: #AA0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+  }
+
+  to {
+    background-color: #FF0;
+  }
+}
+
+@keyframes blinkYellow {
+  from {
+    background-color: #FF0;
+  }
+
+  50% {
+    background-color: #AA0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+  }
+
+  to {
+    background-color: #FF0;
+  }
+}
+
 
 #blur {
   filter: blur(6px);
 
 }
 
+.roll {
+  text-align: center;
+  font-family: "Dotted";
+  border: 6px solid;
+  border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+  border-image-slice: 1;
+}
 
 
-
-@keyframes slide-up {
-  from {
-    margin-top: 100%;
+@media screen and (max-width:768px) {
+  .roll {
+    text-align: center;
+    font-family: "Dotted";
+    border: 6px solid;
+    border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+    border-image-slice: 1;
+    width: fit-content;
+    height: fit-content;
   }
 
-  to {
-    margin-top: 0%;
-  }
+
 }
