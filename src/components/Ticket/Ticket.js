@@ -23,7 +23,7 @@ export default function Ticket({ data, putData }) {
 								width: "100%",
 								borderStyle: " solid",
 								borderImage:
-									"linear-gradient(110deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25)",
+									"linear-gradient(180deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25)",
 								borderImageSlice: "1",
 							}}
 						/>

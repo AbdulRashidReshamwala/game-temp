@@ -5,7 +5,6 @@
 .rules {
   background-color: #faf4e8;
   border: 7px solid;
-
   border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
   border-image-slice: 1;
 }
