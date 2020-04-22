@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TicketCol.css";
 
 export default function TicketCol({ data, colId, fun }) {
+	const [sound, playSound] = useState(true);
+	const url = "http://streaming.tdiradio.com:8000/house.mp3";
+	var audio = new Audio(url);
+
+	function element(ele) {
+		audio.play();
+		return ele;
+	}
+
 	return (
 		<>
 			{data.map((ele, id) => (
@@ -104,7 +113,7 @@ export default function TicketCol({ data, colId, fun }) {
 					) : null}
 
 					<div className="ticketBox" key={id} onClick={() => fun(id, colId)}>
-						<span>{ele === 99 ? null : ele}</span>
+						<span>{ele === 99 ? null : element(ele)}</span>
 					</div>
 					{(id + 1) % 4 === 0 ? <div style={{ height: "1.2vh" }}></div> : null}
 				</div>

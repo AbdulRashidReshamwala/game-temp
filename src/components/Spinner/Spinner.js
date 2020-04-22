@@ -14,6 +14,10 @@ export default function Spinner({ spining, result, data, speed, draw }) {
 
 	return (
 		<div>
+			<div class="led-box">
+				<div class="led-yellow"></div>
+				<p>OK</p>
+			</div>
 			<div>
 				{spining ? (
 					<div className="roll">
