@@ -17,15 +17,25 @@ div.slide-up div.inner {
 
 }
 
+.roll {
+  text-align: center;
+  font-family: "Dotted";
+  border: 6px solid;
+  border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+  border-image-slice: 1;
+}
 
 
-
-@keyframes slide-up {
-  from {
-    margin-top: 100%;
+@media screen and (max-width:768px) {
+  .roll {
+    text-align: center;
+    font-family: "Dotted";
+    border: 6px solid;
+    border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+    border-image-slice: 1;
+    width: fit-content;
+    height: fit-content;
   }
 
-  to {
-    margin-top: 0%;
-  }
+
 }
