@@ -5,17 +5,30 @@
 .rules {
   background-color: #faf4e8;
   border: 7px solid;
-  border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+  border-image: linear-gradient(
+    30deg,
+    #faf282 0%,
+    #a06b21 50%,
+    #d8bf5c 100%,
+    #a36d25
+  );
   border-image-slice: 1;
 }
 
 .ticketBox {
   text-align: center;
-  height: 6vh;
-  line-height: 6vh;
+  height: 5.5vh;
+  line-height: 5.5vh;
+  font-size: x-large;
   background-color: #faf4e8;
   border: 5px solid;
-  border-image: linear-gradient(180deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+  border-image: linear-gradient(
+    180deg,
+    #faf282 0%,
+    #a06b21 50%,
+    #d8bf5c 100%,
+    #a36d25
+  );
   border-image-slice: 1;
 }
 
@@ -23,7 +36,13 @@
   font-size: 14px;
   font-family: Dotted;
   border: 2px solid;
-  border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+  border-image: linear-gradient(
+    30deg,
+    #faf282 0%,
+    #a06b21 50%,
+    #d8bf5c 100%,
+    #a36d25
+  );
   border-image-slice: 1;
   text-align: center;
   color: white;
@@ -40,7 +59,13 @@
 #big-container:before {
   border: 6px solid;
 
-  border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+  border-image: linear-gradient(
+    30deg,
+    #faf282 0%,
+    #a06b21 50%,
+    #d8bf5c 100%,
+    #a36d25
+  );
   border-image-slice: 1;
 }
 
@@ -57,6 +82,9 @@
   left: 5px;
   right: 5px;
   border-width: 3px;
+}
+.dotted {
+  font-family: Dotted;
 }
 
 @media screen and (max-width: 768px) {

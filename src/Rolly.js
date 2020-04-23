@@ -28,11 +28,11 @@ export default function Rolly() {
         setTimeout(() => {
           setSpinning(true);
           setIndex(index + 1);
-        }, 5000);
+        }, 10000);
       }
       setTimeout(() => {
         setActive(false);
-      }, 5000);
+      }, 10000);
       setTimeout(() => {
         setSpinning(false);
         setActive(true);
@@ -60,12 +60,10 @@ export default function Rolly() {
   }, []);
   const verifyPlacement = (rowId, colId, value) => {
     if (value.row !== rowId && value.row !== 5) {
-      alert(`${value.row + 1} is active but ${rowId + 1} was clicked`);
       return false;
     }
     value = value.number;
     if (data[rowId][colId] !== 99) {
-      alert("stop should be empty");
       return false;
     }
     let topElements = data[rowId].slice(0, colId);
@@ -113,7 +111,7 @@ export default function Rolly() {
             <div className="d-lg-none d-md-none">
               <div className="d-flex justify-content-center">
                 <Row>
-                  <Col>
+                  <Col style={{ paddingLeft: "0px", paddingRight: "0px" }}>
                     <Spinner
                       spining={spinning}
                       result={answers[index].row}
@@ -131,7 +129,7 @@ export default function Rolly() {
                       )}
                     ></Spinner>
                   </Col>
-                  <Col>
+                  <Col style={{ paddingLeft: "0px", paddingRight: "0px" }}>
                     <Spinner
                       spining={spinning}
                       result={index}
@@ -160,7 +158,16 @@ export default function Rolly() {
               </div>
             </div>
             <Row>
-              <Col className="left" sm={12} md={6} style={{ margin: "2.4rem" }}>
+              <Col
+                className="left"
+                sm={12}
+                md={6}
+                style={{
+                  marginLeft: "2.4rem",
+                  marginRight: "2.4rem",
+                  marginTop: "2vh",
+                }}
+              >
                 <Ticket data={data} putData={putData} />
               </Col>
               <Col sm={12} md={4} style={{ margin: "2.4rem" }}>
@@ -170,20 +177,18 @@ export default function Rolly() {
                     style={{ width: "100%", textAlign: "left" }}
                   >
                     <h3>Rules</h3>
-                    <p>
-                      <ul>
-                        <li>Rules</li>
-                        <li>Rules</li>
-                        <li>Rules</li>
-                        <li>Rules</li>
-                        <li>Rules</li>
-                      </ul>
-                    </p>
+                    <ul>
+                      <li>Rules</li>
+                      <li>Rules</li>
+                      <li>Rules</li>
+                      <li>Rules</li>
+                      <li>Rules</li>
+                    </ul>
                   </Jumbotron>
                 </Row>
                 <div className="hide-in-small">
                   <Row>
-                    <Col>
+                    <Col style={{ paddingLeft: "0px", paddingRight: "0px" }}>
                       <Spinner
                         spining={spinning}
                         result={answers[index].row}
@@ -201,7 +206,7 @@ export default function Rolly() {
                         )}
                       ></Spinner>
                     </Col>
-                    <Col>
+                    <Col style={{ paddingLeft: "0px", paddingRight: "0px" }}>
                       <Spinner
                         spining={spinning}
                         result={index}
@@ -216,7 +221,8 @@ export default function Rolly() {
                               textAlign: "center",
                               color: "orange",
                               backgroundColor: "aliceblue",
-
+                              paddingLeft: "0px",
+                              paddingRight: "0px",
                               fontFamily: "Dotted",
                               fontSize: "5rem",
                             }}

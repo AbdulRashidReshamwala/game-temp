@@ -4,7 +4,7 @@
 
 .roll {
   text-align: center;
-  /* font-family: "Dotted"; */
+  font-family: "Dotted";
   border: 6px solid;
   border-image: linear-gradient(
     30deg,

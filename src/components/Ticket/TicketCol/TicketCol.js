@@ -104,7 +104,7 @@ export default function TicketCol({ data, colId, fun }) {
           ) : null}
 
           <div className="ticketBox" key={id} onClick={() => fun(id, colId)}>
-            <span>{ele === 99 ? null : ele}</span>
+            <span className="dotted">{ele === 99 ? null : ele}</span>
           </div>
           {(id + 1) % 4 === 0 ? <div style={{ height: "1.2vh" }}></div> : null}
         </div>
