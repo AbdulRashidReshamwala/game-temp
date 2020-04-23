@@ -2,6 +2,11 @@
   display: none;
 }
 
+#element {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .rules {
   background-color: #f1edc1;
   border: 7px solid;
@@ -16,6 +21,7 @@
 }
 
 .ticketBox {
+  cursor: pointer;
   text-align: center;
   height: 6vh;
   line-height: 6vh;
@@ -30,6 +36,8 @@
   );
   border-image-slice: 1;
 }
+
+
 
 .box {
   font-size: 14px;
