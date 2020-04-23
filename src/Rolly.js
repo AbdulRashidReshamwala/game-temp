@@ -145,7 +145,7 @@ export default function Rolly() {
 														lineHeight: "12vh",
 														textAlign: "center",
 														color: "orange",
-														backgroundColor: "aliceblue",
+														backgroundColor: "black",
 
 														fontFamily: "Dotted",
 														fontSize: "3rem",
