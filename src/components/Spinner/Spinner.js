@@ -14,15 +14,13 @@ export default function Spinner({ spining, result, data, speed, draw }) {
 
 	return (
 		<div>
-			<div>
-				{spining ? (
-					<div className="roll">
-						<div id="blur">{draw(data[index])}</div>
-					</div>
-				) : (
-					<div className="roll">{draw(data[result])}</div>
-				)}
-			</div>
+			{spining ? (
+				<div className="roll">
+					<div id="blur">{draw(data[index])}</div>
+				</div>
+			) : (
+				<div className="roll">{draw(data[result])}</div>
+			)}
 		</div>
 	);
 }

@@ -21,6 +21,7 @@ export default function Rolly() {
 	const [data, setData] = useState(Array(5).fill(Array(12).fill(99)));
 	const [index, setIndex] = useState(-1);
 	const [active, setActive] = useState(true);
+	const [current, setCurrent] = useState(null);
 
 	useEffect(() => {
 		if (status === "active") {
@@ -28,11 +29,12 @@ export default function Rolly() {
 				setTimeout(() => {
 					setSpinning(true);
 					setIndex(index + 1);
-				}, 5000);
+					setCurrent(null);
+				}, 10000);
 			}
 			setTimeout(() => {
 				setActive(false);
-			}, 5000);
+			}, 10000);
 			setTimeout(() => {
 				setSpinning(false);
 				setActive(true);
@@ -58,16 +60,32 @@ export default function Rolly() {
 			);
 		return () => unsubscribe();
 	}, []);
+
+	const addData = (rowId, colId, number) => {
+		let n = [...data];
+		let j = [...n[rowId]];
+		j[colId] = number;
+		n[rowId] = j;
+		setData(n);
+	};
+	const replaceData = (rowId, colId, number, current) => {
+		let n = [...data];
+		let j = [...n[rowId]];
+		j[colId] = number;
+		n[rowId] = j;
+		j = [...n[current[0]]];
+		j[current[1]] = 99;
+		n[current[0]] = j;
+		setData(n);
+	};
+
 	const verifyPlacement = (rowId, colId, value) => {
 		if (value.row !== rowId && value.row !== 5) {
-			alert(`${value.row + 1} is active but ${rowId + 1} was clicked`);
+			console.log("wrong row");
 			return false;
 		}
 		value = value.number;
-		if (data[rowId][colId] !== 99) {
-			alert("stop should be empty");
-			return false;
-		}
+
 		let topElements = data[rowId].slice(0, colId);
 		topElements = topElements.filter((ele) => {
 			return ele !== 99;
@@ -90,14 +108,24 @@ export default function Rolly() {
 	};
 
 	const putData = (colId, rowId) => {
-		if (active && verifyPlacement(rowId, colId, answers[index])) {
-			console.log("added");
-			let n = [...data];
-			let j = [...n[rowId]];
-			j[colId] = answers[index].number;
-			n[rowId] = j;
-			setData(n);
-			setActive(false);
+		if (active) {
+			//if already data there undo
+			if (data[rowId][colId] === answers[index].number) {
+				addData(rowId, colId, 99);
+				setCurrent(null);
+			} else if (current) {
+				console.log("replace");
+				if (verifyPlacement(rowId, colId, answers[index])) {
+					replaceData(rowId, colId, answers[index].number, current);
+					setCurrent([rowId, colId]);
+				}
+			} else {
+				console.log("add");
+				if (verifyPlacement(rowId, colId, answers[index])) {
+					addData(rowId, colId, answers[index].number);
+					setCurrent([rowId, colId]);
+				}
+			}
 		}
 	};
 
