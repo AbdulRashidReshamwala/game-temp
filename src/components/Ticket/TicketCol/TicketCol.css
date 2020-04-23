@@ -17,12 +17,10 @@
 
 .ticketBox {
   text-align: center;
-<<<<<<< HEAD
-  height: 5.5vh;
-  line-height: 5.5vh;
-  font-size: x-large;
-  background-color: #faf4e8;
-  border: 5px solid;
+  height: 6vh;
+  line-height: 6vh;
+  background-color: #f1edc1;
+  border: 7px solid;
   border-image: linear-gradient(
     180deg,
     #faf282 0%,
@@ -30,13 +28,6 @@
     #d8bf5c 100%,
     #a36d25
   );
-=======
-  height: 6vh;
-  line-height: 6vh;
-  background-color: #f1edc1;
-  border: 7px solid;
-  border-image: linear-gradient(180deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
->>>>>>> c3f8e9203fefd3f6a6dbb5253d927c4770127165
   border-image-slice: 1;
 }
 

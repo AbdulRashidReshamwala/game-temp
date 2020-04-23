@@ -1,13 +1,11 @@
 #blur {
   filter: blur(6px);
-
 }
 
 .roll {
   text-align: center;
   font-family: "Dotted";
-<<<<<<< HEAD
-  border: 6px solid;
+  border: 10px solid;
   border-image: linear-gradient(
     30deg,
     #faf282 0%,
@@ -15,24 +13,23 @@
     #d8bf5c 100%,
     #a36d25
   );
-=======
-  border: 10px solid;
-  border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
->>>>>>> c3f8e9203fefd3f6a6dbb5253d927c4770127165
   border-image-slice: 1;
 }
 
-
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .roll {
     text-align: center;
     font-family: "Dotted";
     border: 6px solid;
-    border-image: linear-gradient(30deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25);
+    border-image: linear-gradient(
+      30deg,
+      #faf282 0%,
+      #a06b21 50%,
+      #d8bf5c 100%,
+      #a36d25
+    );
     border-image-slice: 1;
     width: fit-content;
     height: fit-content;
   }
-
-
 }
