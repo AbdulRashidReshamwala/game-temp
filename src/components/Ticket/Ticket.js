@@ -23,7 +23,7 @@ export default function Ticket({ data, putData }) {
 								paddingTop: "2vh",
 								paddingBottom: "2vh",
 								width: "100%",
-								borderStyle: " solid",
+								border: " 5px solid",
 								backgroundColor: "black",
 								borderImage:
 									"linear-gradient(180deg, #faf282 0%, #a06b21 50%, #d8bf5c 100%, #a36d25)",
