@@ -1,37 +1,33 @@
-	@font-face {
-	  font-family: Dotted;
-	  src: url("%PUBLIC_URL%/assets/BudmoJiggler.TFF");
-	}
+.hide-in-large {
+  display: none;
+}
 
-	.hide-in-large {
-	  display: none;
-	}
 
-	@media screen and (max-width: 768px) {
-	  .hide-in-large {
-	    display: inline-flex;
+@media screen and (max-width: 768px) {
+  .hide-in-large {
+    display: inline-flex;
 
-	  }
+  }
 
-	  .hide-in-small {
-	    display: none;
-	  }
+  .hide-in-small {
+    display: none;
+  }
 
-	  #o {
-	    font-size: 10px;
-	    margin-left: -3.8rem !important;
-	  }
+  #o {
+    font-size: 10px;
+    margin-left: -3.8rem !important;
+  }
 
-	  #a {
-	    font-size: 9px;
-	    margin-left: -4rem !important;
-	  }
+  #a {
+    font-size: 9px;
+    margin-left: -4rem !important;
+  }
 
-	  .box {
-	    font-size: 12px;
-	  }
+  .box {
+    font-size: 12px;
+  }
 
-	  #block {
-	    margin-right: -4rem;
-	  }
-	}
+  #block {
+    margin-right: -4rem;
+  }
+}
