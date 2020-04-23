@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Spinner from "./components/Spinner/Spinner";
 import Ticket from "./components/Ticket/Ticket";
-import { Container, Row, Col, Image, Jumbotron } from "react-bootstrap";
+import { Container, Row, Col, Image, Jumbotron, Button } from "react-bootstrap";
 import db from "./firbase";
 import "./Rolly.css";
 
@@ -22,13 +22,16 @@ export default function Rolly() {
 	const [index, setIndex] = useState(-1);
 	const [active, setActive] = useState(true);
 	const [current, setCurrent] = useState(null);
+	const [score, setScore] = useState(0);
+	const [wins, setWins] = useState([]);
 
-	var audio = new Audio(`${window.location.origin}/assets/c.mp3`);
-	var spinSound = new Audio(`${window.location.origin}/assets/spin.mp3`);
+	var clickSound = new Audio(`${window.location.origin}/assets/c.mp3`);
+	//var spinSound = new Audio(`${window.location.origin}/assets/spin.mp3`);
 
 	useEffect(() => {
 		if (status === "active") {
 			if (index < answers.length - 1) {
+				scoreGame();
 				setTimeout(() => {
 					setSpinning(true);
 					setIndex(index + 1);
@@ -52,7 +55,6 @@ export default function Rolly() {
 			.onSnapshot(
 				(doc) => {
 					let data = doc.data();
-					console.log(data);
 					setAnswers(data.meta);
 					setStatus("active");
 					setIndex(0);
@@ -111,7 +113,7 @@ export default function Rolly() {
 	};
 
 	const putData = (colId, rowId) => {
-		audio.play();
+		clickSound.play();
 		if (active) {
 			//if already data there undo
 			if (data[rowId][colId] === answers[index].number) {
@@ -137,11 +139,106 @@ export default function Rolly() {
 		"root"
 	).style.backgroundImage = `url("${window.location.origin}/assets/rolly/bg.png")`;
 
+	const getRow = (i) => {
+		return data
+			.map((col) => {
+				return col[i];
+			})
+			.filter((ele) => {
+				return ele !== 99;
+			});
+	};
+
+	const scoreGame = () => {
+		let score = 0;
+		let w = [];
+		data.forEach((column, i) => {
+			let e = column.filter((ele) => {
+				return ele !== 99;
+			});
+			if (e.length === 12) {
+				score += 100;
+				w.push(`column ${i}`);
+			}
+		});
+		for (let i = 0; i < 3; i++) {
+			let block = [
+				...data[0].slice(i * 4, (i + 1) * 4),
+				...data[1].slice(i * 4, (i + 1) * 4),
+				...data[2].slice(i * 4, (i + 1) * 4),
+				...data[3].slice(i * 4, (i + 1) * 4),
+				...data[4].slice(i * 4, (i + 1) * 4),
+			];
+			block = block.filter((ele) => {
+				return ele !== 99;
+			});
+			if (block.length === 20) {
+				score += 200;
+				w.push(`block ${i}`);
+			}
+		}
+		let topRow = getRow(0);
+		if (topRow.length === 5) {
+			if (topRow.filter((ele) => ele % 2 === 0).length === 5) {
+				console.log("odd");
+				score += 100;
+				w.push(`top row even`);
+			} else if (topRow.filter((ele) => ele % 2 !== 0).length === 5) {
+				console.log("even");
+				score += 100;
+				w.push(`top row odd`);
+			}
+		}
+		// console.log(topRow);
+		let bottomRow = getRow(11);
+		// console.log(bottomRow);
+		if (bottomRow.length === 5) {
+			if (bottomRow.filter((ele) => ele % 2 === 0).length === 5) {
+				console.log("odd");
+				score += 100;
+				w.push(`bottom row even`);
+			} else if (bottomRow.filter((ele) => ele % 2 !== 0).length === 5) {
+				console.log("even");
+				score += 100;
+				w.push(`bootom row odd`);
+			}
+		}
+
+		let assen = [2, 6, 9];
+		assen.forEach((i) => {
+			let r = getRow(i);
+			if (
+				r.length === 5 &&
+				r.reduce((n, item) => n !== false && item >= n && item)
+			) {
+				console.log("yes");
+				score += 100;
+				w.push(`assendin ${i}`);
+			}
+		});
+		setWins(w);
+		console.log(score);
+		setScore(score);
+	};
+
+	const temp = () => {
+		let n = [...data];
+		n[0] = Array(12).fill(10);
+		n[1] = Array(12).fill(12);
+		n[2] = Array(12).fill(14);
+		n[3] = Array(12).fill(16);
+		n[4] = Array(12).fill(18);
+
+		setData(n);
+	};
+
 	return (
 		<div style={{ minHeight: "100%", textAlign: "center" }}>
 			{index > -1 ? (
 				<>
 					<Container>
+						{/* <Button onClick={scoreGame}> score</Button> */}
+						{/* <Button onClick={temp}>T</Button> */}
 						<div className="d-lg-none d-md-none">
 							<div className="d-flex justify-content-center">
 								<Row>
@@ -154,7 +251,13 @@ export default function Rolly() {
 											draw={(item) => (
 												<>
 													{spinning ? (
-														<div className="roll">
+														<div
+															className="roll"
+															style={{
+																height: "14.8vh",
+																width: "12vh",
+															}}
+														>
 															<div
 																id="inner-spin"
 																style={{ filter: "blur(10px)" }}
@@ -163,21 +266,27 @@ export default function Rolly() {
 																	fluid
 																	src={`${window.location.origin}/assets/rolly/images/${item}`}
 																	style={{
-																		height: "10vh",
-																		width: "10vh",
+																		height: "7vh",
+																		width: "100%",
 																	}}
 																/>
 															</div>
 														</div>
 													) : (
-														<div className="roll">
+														<div
+															className="roll"
+															style={{
+																height: "14.8vh",
+																width: "12vh",
+															}}
+														>
 															<div id="inner-spin">
 																<Image
 																	fluid
 																	src={`${window.location.origin}/assets/rolly/images/${item}`}
 																	style={{
-																		height: "10vh",
-																		width: "10vh",
+																		height: "7vh",
+																		width: "100%",
 																	}}
 																/>
 															</div>
@@ -196,20 +305,26 @@ export default function Rolly() {
 											draw={(item) => (
 												<>
 													{spinning ? (
-														<div className="roll" style={{ width: "12vh" }}>
+														<div
+															className="roll"
+															style={{ height: "14.8vh", width: "12vh" }}
+														>
 															<div
 																id="inner-spin"
 																style={{
-																	fontSize: "3rem",
 																	filter: "blur(10px)",
+																	fontSize: "2rem",
 																}}
 															>
 																{item.number}
 															</div>
 														</div>
 													) : (
-														<div className="roll" style={{ width: "12vh" }}>
-															<div id="inner-spin" style={{ fontSize: "3rem" }}>
+														<div
+															className="roll"
+															style={{ height: "14.8vh", width: "12vh" }}
+														>
+															<div id="inner-spin" style={{ fontSize: "2rem" }}>
 																{item.number}
 															</div>
 														</div>
@@ -217,6 +332,29 @@ export default function Rolly() {
 												</>
 											)}
 										></Spinner>
+									</Col>
+									<Col style={{ padding: 0, margin: 0 }} xs={4}>
+										{/* <Spinner
+											spining={true}
+											result={index}
+											speed={900}
+											data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reverse()}
+											draw={(item) => (
+												<div
+													style={{
+														fontFamily: "Dotted",
+														fontSize: "3rem",
+														height: "12vh",
+														width: "100%",
+														lineHeight: "12vh",
+														textAlign: "center",
+														color: "orange",
+													}}
+												>
+													{item}
+												</div>
+											)}
+										></Spinner> */}
 									</Col>
 								</Row>
 							</div>
@@ -231,16 +369,12 @@ export default function Rolly() {
 										className="rules"
 										style={{ width: "100%", textAlign: "left" }}
 									>
-										<h3>Rules</h3>
-										<p>
-											<ul>
-												<li>Rules</li>
-												<li>Rules</li>
-												<li>Rules</li>
-												<li>Rules</li>
-												<li>Rules</li>
-											</ul>
-										</p>
+										<h3>{score}</h3>
+										<ul>
+											{wins.map((win) => (
+												<li>{win}</li>
+											))}
+										</ul>
 									</Jumbotron>
 								</Row>
 								<div className="hide-in-small">
@@ -256,7 +390,7 @@ export default function Rolly() {
 														{spinning ? (
 															<div className="roll">
 																<div
-																	className="inner-spin"
+																	id="inner-spin"
 																	style={{ filter: "blur(10px)" }}
 																>
 																	<Image
@@ -271,7 +405,7 @@ export default function Rolly() {
 															</div>
 														) : (
 															<div className="roll">
-																<div className="inner-spin">
+																<div id="inner-spin">
 																	<Image
 																		fluid
 																		src={`${window.location.origin}/assets/rolly/images/${item}`}
@@ -296,22 +430,18 @@ export default function Rolly() {
 												draw={(item) => (
 													<>
 														{spinning ? (
-															<>
-																<div className="roll">
-																	<div
-																		id="inner-spin"
-																		style={{ filter: "blur(10px)" }}
-																	>
-																		{item.number}
-																	</div>
+															<div className="roll">
+																<div
+																	id="inner-spin"
+																	style={{ filter: "blur(10px)" }}
+																>
+																	{item.number}
 																</div>
-															</>
+															</div>
 														) : (
-															<>
-																<div className="roll">
-																	<div id="inner-spin">{item.number}</div>
-																</div>
-															</>
+															<div className="roll">
+																<div id="inner-spin">{item.number}</div>
+															</div>
 														)}
 													</>
 												)}
