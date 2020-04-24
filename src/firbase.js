@@ -1,14 +1,13 @@
 import * as firebase from "firebase";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCgT6b2yWFNjBLmKm-XR4CjELqJbC1_iqs",
-  authDomain: "board-game-co-test.firebaseapp.com",
-  databaseURL: "https://board-game-co-test.firebaseio.com",
-  projectId: "board-game-co-test",
-  storageBucket: "board-game-co-test.appspot.com",
-  messagingSenderId: "567495644095",
-  appId: "1:567495644095:web:2a5fd82872c7569e11c70a",
-  measurementId: "G-L2CK8BXWD6",
+var firebaseConfig = {
+  apiKey: "AIzaSyAPqRs4bdxKc8XztjT_hjMs2jPOXpVqWEw",
+  authDomain: "board-game-co.firebaseapp.com",
+  databaseURL: "https://board-game-co.firebaseio.com",
+  projectId: "board-game-co",
+  storageBucket: "board-game-co.appspot.com",
+  messagingSenderId: "950092828575",
+  appId: "1:950092828575:web:32031340551e348dffb7aa",
 };
 
 firebase.initializeApp(firebaseConfig);
