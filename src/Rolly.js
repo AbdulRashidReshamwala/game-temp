@@ -318,7 +318,7 @@ export default function Rolly() {
                                   fluid
                                   src={`${window.location.origin}/assets/rolly/images/${item}`}
                                   style={{
-                                    height: "7vh",
+                                    height: "5vh",
                                     width: "100%",
                                   }}
                                 />
