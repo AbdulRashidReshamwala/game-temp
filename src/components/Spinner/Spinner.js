@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Spinner.css";
 
 export default function Spinner({ spining, result, data, speed, draw }) {
-	const [index, setIndex] = useState(0);
+	const [index, setIndex] = useState(0);	
 	useEffect(() => {
 		const interval = setInterval(() => {
 			if (spining) {
