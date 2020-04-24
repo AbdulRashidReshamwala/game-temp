@@ -34,7 +34,7 @@ export default function Rolly() {
 
 		function pauseTimer() {
 		console.log("paused")
-		timerSound.play();
+		timerSound.pause();
 	}
 
 	  useEffect(() => {
@@ -276,99 +276,70 @@ export default function Rolly() {
               <div className="d-flex justify-content-center">
                 <Row>
                   <Col style={{padding:0, margin:0}}>
-                    <Spinner
-                      spining={spinning}
-                      result={index !== -1 ? answers[index].row : 0}
-                      speed={200}
-                      data={images}
-                      draw={(item) => (
-                        <>
-                          {spinning ? (
-                            <div
-                              className="roll"
-                              style={{
-                                height: "13vh",
-                                width: "12vh",
-                              }}
-                            >
-                              <div
-                                id="inner-spin"
-                                style={{ filter: "blur(10px)" }}
-                              >
-                                <Image
-                                  fluid
-                                  src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                  style={{
-                                    height: "7vh",
-                                    width: "100%",
-                                  }}
-                                />
+									 <Spinner
+                        spining={spinning}
+                        result={index !== -1 ? answers[index].row : 0}
+                        speed={100}
+                        data={images}
+                        draw={(item) => (
+                          <>
+                            {spinning ? (
+                              <div className="roll" style={{width:'13vh'}}>
+                                <div
+                                  id="inner-spin"
+                                  style={{ filter: "blur(10px)" }}
+                                >
+                                  <Image
+                                    fluid
+																		src={`${window.location.origin}/assets/rolly/images/${item}`}
+																		 style={{height:'11vh'}}
+                                  />
+                                </div>
                               </div>
-                            </div>
-                          ) : (
-                            <div
-                              className="roll"
-                              style={{
-                                height: "13vh",
-                                width: "12vh",
-                              }}
-                            >
-                              <div id="inner-spin">
-                                <Image
-                                  fluid
-                                  src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                  style={{
-                                    height: "5vh",
-                                    width: "100%",
-                                  }}
-                                />
+                            ) : (
+                              <div className="roll" style={{width:'13vh'}}>
+                                <div id="inner-spin">
+                                  <Image
+                                    fluid
+                                    src={`${window.location.origin}/assets/rolly/images/${item}`}
+                                  style={{height:'11vh'}}
+                                  />
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </>
-                      )}
-                    ></Spinner>
+                            )}
+                          </>
+                        )}
+                      ></Spinner>
+
                   </Col>
                   <Col style={{padding:0, margin:0}}>
                     <Spinner
-                      spining={spinning}
-                      result={index !== -1 ? index : 0}
-                      speed={200}
-                      data={answers}
-                      draw={(item) => (
-                        <>
-                          {spinning ? (
-                            <div
-                              className="roll"
-                              style={{ height: "13vh", width: "12vh" }}
-                            >
-                              <div
-                                id="inner-spin"
-                                style={{
-                                  filter: "blur(10px)",
-                                  fontSize: "2rem",
-                                }}
-                              >
-                                {item.number}
+                        spining={spinning}
+                        result={index !== -1 ? index : 0}
+                        speed={100}
+                        data={answers}
+                        draw={(item) => (
+                          <>
+                            {spinning ? (
+                              <div className="roll" style={{width:'13vh'}}>
+                                <div
+                                  id="inner-spin"
+                                  style={{ filter: "blur(10px)", fontSize:'3rem' }}
+                                >
+                                  {item.number}
+                                </div>
                               </div>
-                            </div>
-                          ) : (
-                            <div
-                              className="roll"
-                              style={{ height: "13vh", width: "12vh" }}
-                            >
-                              <div id="inner-spin" style={{ fontSize: "2rem" }}>
-                                {item.number}
+                            ) : (
+                              <div className="roll" style={{width:'13vh'}}>
+                                <div id="inner-spin" style={{fontSize:'3rem' }}>{item.number}</div>
                               </div>
-                            </div>
-                          )}
-                        </>
-                      )}
-                    ></Spinner>
+                            )}
+                          </>
+                        )}
+                      ></Spinner>
                   </Col>
-									<div className="ml-auto mt-1"> 
-										 <Col  >
-                  <Col style={{ padding: 0, margin: 0 }} >
+									<div className="ml-auto mt-2"> 
+                  <Col >
                     <Spinner
 											spining={true}
 											result={index}
@@ -379,7 +350,6 @@ export default function Rolly() {
 													style={{
 														fontFamily: "Sans-serif",
 														border: '2px solid goldenrod',
-														border: '2px solid orange',
 														backgroundColor:'black',
 														fontSize: "3rem",
 														height: "12vh",
@@ -439,6 +409,101 @@ export default function Rolly() {
 											</div>
 										</Col>
 									</Row>
+									
+                <div className="hide-in-small mt-3">
+                  <Row>
+                    <Col lg={4} style={{padding:0, margin:0}}>
+                      <Spinner
+                        spining={spinning}
+                        result={index !== -1 ? answers[index].row : 0}
+                        speed={100}
+                        data={images}
+                        draw={(item) => (
+                          <>
+                            {spinning ? (
+                              <div className="roll">
+                                <div
+                                  id="inner-spin"
+                                  style={{ filter: "blur(10px)" }}
+                                >
+                                  <Image
+                                    fluid
+																		src={`${window.location.origin}/assets/rolly/images/${item}`}
+																		 style={{height:'11vh'}}
+                                  />
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="roll">
+                                <div id="inner-spin">
+                                  <Image
+                                    fluid
+                                    src={`${window.location.origin}/assets/rolly/images/${item}`}
+                                  style={{height:'11vh'}}
+                                  />
+                                </div>
+                              </div>
+                            )}
+                          </>
+                        )}
+                      ></Spinner>
+                    </Col>
+											<Col lg={4}style={{padding:0, margin:0}}>
+                      <Spinner
+                        spining={spinning}
+                        result={index !== -1 ? index : 0}
+                        speed={100}
+                        data={answers}
+                        draw={(item) => (
+                          <>
+                            {spinning ? (
+                              <div className="roll">
+                                <div
+                                  id="inner-spin"
+                                  style={{ filter: "blur(10px)", fontSize:'3rem' }}
+                                >
+                                  {item.number}
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="roll">
+                                <div id="inner-spin" style={{fontSize:'3rem' }}>{item.number}</div>
+                              </div>
+                            )}
+                          </>
+                        )}
+                      ></Spinner>
+											</Col>
+											<div className="ml-auto mt-2">
+												<Col lg={3} style={{padding:0, margin:0}}>
+                      <Spinner
+											spining={true}
+											result={index}
+											speed={900}
+											data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reverse()}
+											draw={(item) => (
+												<div
+													style={{
+														fontFamily: "Sans-serif",
+														border: '2px solid goldenrod',
+														backgroundColor:'black',
+														fontSize: "3rem",
+														height: "12vh",
+														width: "10vh",
+														lineHeight: "12vh",
+														textAlign: "center",
+														color: "orange",
+													}}
+												>
+													{item}
+												</div>
+											)}
+										></Spinner>
+												</Col>
+											</div>
+                  </Row>
+                </div>
+							
 									<div className="hide-in-small mt-3">
 									{/* Scoring */}
 									<Row>
@@ -473,142 +538,9 @@ export default function Rolly() {
 												</ol>
 											</div>
 										</Col>
-									</Row>
+										</Row>
 								</div>
-                <div className="hide-in-small">
-                  <Row>
-                    <Col style={{padding:0, margin:0}}>
-                      <Spinner
-                        spining={spinning}
-                        result={index !== -1 ? answers[index].row : 0}
-                        speed={100}
-                        data={images}
-                        draw={(item) => (
-                          <>
-                            {spinning ? (
-                              <div className="roll">
-                                <div
-                                  id="inner-spin"
-                                  style={{ filter: "blur(10px)" }}
-                                >
-                                  <Image
-                                    fluid
-                                    src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                    style={{
-                                      height: "12vh",
-                                      width: "100%",
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="roll">
-                                <div id="inner-spin">
-                                  <Image
-                                    fluid
-                                    src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                    style={{
-                                      height: "12vh",
-                                      width: "100%",
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                            )}
-                          </>
-                        )}
-                      ></Spinner>
-                    </Col>
-                    <Col style={{padding:0, margin:0}}>
-                      <Spinner
-                        spining={spinning}
-                        result={index !== -1 ? index : 0}
-                        speed={100}
-                        data={answers}
-                        draw={(item) => (
-                          <>
-                            {spinning ? (
-                              <div className="roll">
-                                <div
-                                  id="inner-spin"
-                                  style={{ filter: "blur(10px)" }}
-                                >
-                                  {item.number}
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="roll">
-                                <div id="inner-spin">{item.number}</div>
-                              </div>
-                            )}
-                          </>
-                        )}
-                      ></Spinner>
-											</Col>
-											<div className="ml-auto mt-2">
-												<Col>
-                      <Spinner
-											spining={true}
-											result={index}
-											speed={900}
-											data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reverse()}
-											draw={(item) => (
-												<div
-													style={{
-														fontFamily: "Sans-serif",
-														border: '2px solid goldenrod',
-														backgroundColor:'black',
-														fontSize: "3rem",
-														height: "12vh",
-														width: "10vh",
-														lineHeight: "12vh",
-														textAlign: "center",
-														color: "orange",
-													}}
-												>
-													{item}
-												</div>
-											)}
-										></Spinner>
-												</Col>
-											</div>
-                  </Row>
-                </div>
-									{/* Scoring */}
-									<Row>
-										<Col>
-											<div
-												className="rules"
-												style={{ textAlign: "left", marginTop: "1.3vh" }}
-											>
-												<h6>Scoring</h6>
-												<ol>
-													<li>Test</li>
-													<li>Test</li>
-													<li>Test</li>
-													<li>Test</li>
-												</ol>
-											</div>
-										</Col>
-									</Row>
-									{/* rules */}
-									<Row>
-										<Col>
-											<div
-												className="rules"
-												style={{ textAlign: "left", marginTop: "1.3vh" }}
-											>
-												<h6>Rules</h6>
-												<ol>
-													<li>Rules</li>
-													<li>Rules</li>
-													<li>Rules</li>
-													<li>Rules</li>
-												</ol>
-											</div>
-										</Col>
-									</Row>
-								</div>
+               	</div>
               </Col>
             </Row>
           </Container>
