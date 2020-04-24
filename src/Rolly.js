@@ -242,7 +242,7 @@ export default function Rolly() {
 						<div className="d-lg-none d-md-none">
 							<div className="d-flex justify-content-center">
 								<Row>
-									<Col>
+									<Col style={{ margin: 0, padding: 0 }}>
 										<Spinner
 											spining={spinning}
 											result={answers[index].row}
@@ -296,7 +296,7 @@ export default function Rolly() {
 											)}
 										></Spinner>
 									</Col>
-									<Col>
+									<Col style={{ margin: 0, padding: 0 }}>
 										<Spinner
 											spining={spinning}
 											result={index}
@@ -333,29 +333,32 @@ export default function Rolly() {
 											)}
 										></Spinner>
 									</Col>
-									<Col style={{ padding: 0, margin: 0 }} xs={4}>
-										{/* <Spinner
-											spining={true}
-											result={index}
-											speed={900}
-											data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reverse()}
-											draw={(item) => (
-												<div
-													style={{
-														fontFamily: "Dotted",
-														fontSize: "3rem",
-														height: "12vh",
-														width: "100%",
-														lineHeight: "12vh",
-														textAlign: "center",
-														color: "orange",
-													}}
-												>
-													{item}
-												</div>
-											)}
-										></Spinner> */}
-									</Col>
+									<div className="ml-auto mt-2">
+										<Col style={{ marginLeft: "5px" }}>
+											<Spinner
+												spining={true}
+												result={index}
+												speed={900}
+												data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reverse()}
+												draw={(item) => (
+													<div
+														style={{
+															fontFamily: "Dotted",
+															fontSize: "3rem",
+															height: "12vh",
+															width: "10vh",
+															border: "2px solid orange",
+															lineHeight: "12vh",
+															textAlign: "center",
+															color: "orange",
+														}}
+													>
+														{item}
+													</div>
+												)}
+											></Spinner>
+										</Col>
+									</div>
 								</Row>
 							</div>
 						</div>
