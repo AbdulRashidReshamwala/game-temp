@@ -354,8 +354,8 @@ export default function Rolly() {
                       )}
                     ></Spinner>
                   </Col>
-                  <Col style={{ padding: 0, margin: 0 }} xs={4}>
-                    {/* <Spinner
+                  <Col style={{ padding: 0, margin: 0 }} >
+                    <Spinner
 											spining={true}
 											result={index}
 											speed={900}
@@ -363,10 +363,12 @@ export default function Rolly() {
 											draw={(item) => (
 												<div
 													style={{
-														fontFamily: "Dotted",
+														fontFamily: "Sans-serif",
+														border: '2px solid orange',
+														backgroundColor:'black',
 														fontSize: "3rem",
 														height: "12vh",
-														width: "100%",
+														width: "10vh",
 														lineHeight: "12vh",
 														textAlign: "center",
 														color: "orange",
@@ -375,7 +377,7 @@ export default function Rolly() {
 													{item}
 												</div>
 											)}
-										></Spinner> */}
+										></Spinner>
                   </Col>
                 </Row>
               </div>
@@ -385,19 +387,77 @@ export default function Rolly() {
                 <Ticket data={data} putData={putData} />
               </Col>
               <Col sm={12} md={4} style={{ margin: "2.4rem" }}>
-                <Row>
-                  <Jumbotron
-                    className="rules"
-                    style={{ width: "100%", textAlign: "left" }}
-                  >
-                    <h3>{score}</h3>
-                    <ul>
-                      {wins.map((win) => (
-                        <li>{win}</li>
-                      ))}
-                    </ul>
-                  </Jumbotron>
-                </Row>
+                <div className="score-boxes">
+									<Row>
+										{/* score */}
+										<Col xs={7}>
+											<div
+												className="rules"
+												style={{ width: "100%", textAlign: "left" }}
+											>
+												<h5>
+													Score:
+													<span>
+														<h7> {score}</h7>
+													</span>
+												</h5>
+
+												<ul>
+													{wins.map((win) => (
+														<li>{win}</li>
+													))}
+												</ul>
+											</div>
+										</Col>
+										{/* nos remaining */}
+										<Col xs={5}>
+											<div
+												className="rules"
+												style={{ width: "100%", textAlign: "left" }}
+											>
+												<p style={{ fontSize: "0.6rem", fontWeight: "bold" }}>
+													Remaining:
+													<br />
+													1,2,4
+												</p>
+											</div>
+										</Col>
+									</Row>
+									{/* Scoring */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Scoring</h6>
+												<ol>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+									{/* rules */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Rules</h6>
+												<ol>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+								</div>
                 <div className="hide-in-small">
                   <Row>
                     <Col>
