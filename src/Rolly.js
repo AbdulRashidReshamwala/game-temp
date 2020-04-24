@@ -25,14 +25,8 @@ export default function Rolly() {
 	const [score, setScore] = useState(0);
 	const [wins, setWins] = useState([]);
 
-	var timerSound = new Audio(`${window.location.origin}/assets/timer.mp3`);
 	var clickSound = new Audio(`${window.location.origin}/assets/c.mp3`);
 	//var spinSound = new Audio(`${window.location.origin}/assets/spin.mp3`);
-
-	function playTimer() {
-		console.log("Played");
-		timerSound.play();
-	}
 
 	useEffect(() => {
 		if (status === "active") {
