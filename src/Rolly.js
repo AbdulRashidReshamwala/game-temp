@@ -25,8 +25,14 @@ export default function Rolly() {
 	const [score, setScore] = useState(0);
 	const [wins, setWins] = useState([]);
 
+	var timerSound = new Audio(`${window.location.origin}/assets/timer.mp3`);
 	var clickSound = new Audio(`${window.location.origin}/assets/c.mp3`);
 	//var spinSound = new Audio(`${window.location.origin}/assets/spin.mp3`);
+
+	function playTimer() {
+		console.log("Played");
+		timerSound.play();
+	}
 
 	useEffect(() => {
 		if (status === "active") {
@@ -134,10 +140,6 @@ export default function Rolly() {
 			}
 		}
 	};
-
-	document.getElementById(
-		"root"
-	).style.backgroundImage = `url("${window.location.origin}/assets/rolly/bg.png")`;
 
 	const getRow = (i) => {
 		return data
@@ -346,6 +348,7 @@ export default function Rolly() {
 															fontFamily: "Sans-Serif",
 															fontSize: "3rem",
 															height: "12vh",
+															backgroundColor: "black",
 															width: "10vh",
 															border: "2px solid orange",
 															lineHeight: "12vh",
