@@ -3,9 +3,9 @@
 }
 
 #inner-spin {
-  height: 12vh;
+  height: 10vh;
   width: 100%;
-  line-height: 12vh;
+  line-height: 10vh;
   text-align: center;
   color: orange;
   background-color: black;
@@ -23,7 +23,6 @@
 
 .roll {
   text-align: center;
-
   height: 14.8vh;
   width: 100%;
   border: 10px solid;

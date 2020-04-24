@@ -25,15 +25,25 @@ export default function Rolly() {
   const [score, setScore] = useState(0);
   const [wins, setWins] = useState([]);
 
-  var clickSound = new Audio(`${window.location.origin}/assets/c.mp3`);
-  //var spinSound = new Audio(`${window.location.origin}/assets/spin.mp3`);
+	var timerSound = document.getElementById("timerSound")
+  
+	function playTimer() {
+		console.log("played")
+		timerSound.play();
+	}
 
-  useEffect(() => {
+		function pauseTimer() {
+		console.log("paused")
+		timerSound.play();
+	}
+
+	  useEffect(() => {
     if (status === "active") {
       if (index < answers.length - 1) {
         scoreGame();
-        setTimeout(() => {
-          setSpinning(true);
+				setTimeout(() => {
+					pauseTimer();
+					setSpinning(true);
           setIndex(index + 1);
           setCurrent(null);
         }, 10000);
@@ -41,12 +51,15 @@ export default function Rolly() {
       setTimeout(() => {
         setActive(false);
       }, 10000);
-      setTimeout(() => {
+			setTimeout(() => {
+				playTimer();
         setSpinning(false);
         setActive(true);
       }, 2000);
     }
-  }, [index, answers.length, status]);
+	}, [index, answers.length, status]);
+	
+	
 
   useEffect(() => {
     const unsubscribe = db
@@ -120,7 +133,6 @@ export default function Rolly() {
   };
 
   const putData = (colId, rowId) => {
-    clickSound.play();
     if (active) {
       //if already data there undo
       if (data[rowId][colId] === answers[index].number) {
@@ -235,11 +247,11 @@ export default function Rolly() {
     setData(n);
   };
 
-  return (
-    <div style={{ minHeight: "100%", textAlign: "center" }}>
+	return (
+	<div style={{ minHeight: "100%", textAlign: "center" }}>
       {status === "ready" ? (
-        <Spinner
-          spining={true}
+				<Spinner
+				  spining={true}
           speed={1000}
           data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reverse()}
           draw={(item) => {
@@ -263,7 +275,7 @@ export default function Rolly() {
             <div className="d-lg-none d-md-none">
               <div className="d-flex justify-content-center">
                 <Row>
-                  <Col>
+                  <Col style={{padding:0, margin:0}}>
                     <Spinner
                       spining={spinning}
                       result={index !== -1 ? answers[index].row : 0}
@@ -275,7 +287,7 @@ export default function Rolly() {
                             <div
                               className="roll"
                               style={{
-                                height: "14.8vh",
+                                height: "13vh",
                                 width: "12vh",
                               }}
                             >
@@ -297,7 +309,7 @@ export default function Rolly() {
                             <div
                               className="roll"
                               style={{
-                                height: "14.8vh",
+                                height: "13vh",
                                 width: "12vh",
                               }}
                             >
@@ -306,7 +318,7 @@ export default function Rolly() {
                                   fluid
                                   src={`${window.location.origin}/assets/rolly/images/${item}`}
                                   style={{
-                                    height: "7vh",
+                                    height: "5vh",
                                     width: "100%",
                                   }}
                                 />
@@ -317,7 +329,7 @@ export default function Rolly() {
                       )}
                     ></Spinner>
                   </Col>
-                  <Col>
+                  <Col style={{padding:0, margin:0}}>
                     <Spinner
                       spining={spinning}
                       result={index !== -1 ? index : 0}
@@ -328,7 +340,7 @@ export default function Rolly() {
                           {spinning ? (
                             <div
                               className="roll"
-                              style={{ height: "14.8vh", width: "12vh" }}
+                              style={{ height: "13vh", width: "12vh" }}
                             >
                               <div
                                 id="inner-spin"
@@ -343,7 +355,7 @@ export default function Rolly() {
                           ) : (
                             <div
                               className="roll"
-                              style={{ height: "14.8vh", width: "12vh" }}
+                              style={{ height: "13vh", width: "12vh" }}
                             >
                               <div id="inner-spin" style={{ fontSize: "2rem" }}>
                                 {item.number}
@@ -354,6 +366,8 @@ export default function Rolly() {
                       )}
                     ></Spinner>
                   </Col>
+									<div className="ml-auto mt-1"> 
+										 <Col  >
                   <Col style={{ padding: 0, margin: 0 }} >
                     <Spinner
 											spining={true}
@@ -364,6 +378,7 @@ export default function Rolly() {
 												<div
 													style={{
 														fontFamily: "Sans-serif",
+														border: '2px solid goldenrod',
 														border: '2px solid orange',
 														backgroundColor:'black',
 														fontSize: "3rem",
@@ -379,6 +394,7 @@ export default function Rolly() {
 											)}
 										></Spinner>
                   </Col>
+								 </div>
                 </Row>
               </div>
             </div>
@@ -423,6 +439,7 @@ export default function Rolly() {
 											</div>
 										</Col>
 									</Row>
+									<div className="hide-in-small mt-3">
 									{/* Scoring */}
 									<Row>
 										<Col>
@@ -460,7 +477,7 @@ export default function Rolly() {
 								</div>
                 <div className="hide-in-small">
                   <Row>
-                    <Col>
+                    <Col style={{padding:0, margin:0}}>
                       <Spinner
                         spining={spinning}
                         result={index !== -1 ? answers[index].row : 0}
@@ -502,7 +519,7 @@ export default function Rolly() {
                         )}
                       ></Spinner>
                     </Col>
-                    <Col>
+                    <Col style={{padding:0, margin:0}}>
                       <Spinner
                         spining={spinning}
                         result={index !== -1 ? index : 0}
@@ -527,16 +544,81 @@ export default function Rolly() {
                           </>
                         )}
                       ></Spinner>
-                    </Col>
+											</Col>
+											<div className="ml-auto mt-2">
+												<Col>
+                      <Spinner
+											spining={true}
+											result={index}
+											speed={900}
+											data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reverse()}
+											draw={(item) => (
+												<div
+													style={{
+														fontFamily: "Sans-serif",
+														border: '2px solid goldenrod',
+														backgroundColor:'black',
+														fontSize: "3rem",
+														height: "12vh",
+														width: "10vh",
+														lineHeight: "12vh",
+														textAlign: "center",
+														color: "orange",
+													}}
+												>
+													{item}
+												</div>
+											)}
+										></Spinner>
+												</Col>
+											</div>
                   </Row>
                 </div>
+									{/* Scoring */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Scoring</h6>
+												<ol>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+									{/* rules */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Rules</h6>
+												<ol>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+								</div>
               </Col>
             </Row>
           </Container>
         </>
       ) : (
         <h1>loading</h1>
-      )}
+				)}
+			<audio id="timerSound" controls autoplay hidden>
+  <source src={`${window.location.origin}/assets/timer.mp3`} type="audio/mp3"/>
+</audio>
     </div>
   );
 }
