@@ -26,6 +26,7 @@ export default function Rolly() {
   const [wins, setWins] = useState([]);
 
 	var timerSound = document.getElementById("timerSound")
+	var spinSound = document.getElementById("spinSound")
   
 	function playTimer() {
 		console.log("played")
@@ -37,11 +38,20 @@ export default function Rolly() {
 		timerSound.pause();
 	}
 
+	function playSpin() {
+		spinSound.play()
+	}
+
+	function pauseSpin() {
+		spinSound.pause()
+	}
+
 	  useEffect(() => {
     if (status === "active") {
       if (index < answers.length - 1) {
         scoreGame();
 				setTimeout(() => {
+					playSpin()
 					pauseTimer();
 					setSpinning(true);
           setIndex(index + 1);
@@ -52,6 +62,7 @@ export default function Rolly() {
         setActive(false);
       }, 10000);
 			setTimeout(() => {
+				pauseSpin()
 				playTimer();
         setSpinning(false);
         setActive(true);
@@ -292,17 +303,16 @@ export default function Rolly() {
                                   <Image
                                     fluid
 																		src={`${window.location.origin}/assets/rolly/images/${item}`}
-																		 style={{height:'11vh'}}
+																		
                                   />
                                 </div>
                               </div>
                             ) : (
-                              <div className="roll" style={{width:'13vh'}}>
+																<div className="roll" style={{ width: '13vh' }}>
                                 <div id="inner-spin">
                                   <Image
                                     fluid
                                     src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                  style={{height:'11vh'}}
                                   />
                                 </div>
                               </div>
@@ -504,7 +514,7 @@ export default function Rolly() {
                   </Row>
                 </div>
 							
-									<div className="hide-in-small mt-3">
+								
 									{/* Scoring */}
 									<Row>
 										<Col>
@@ -540,7 +550,6 @@ export default function Rolly() {
 										</Col>
 										</Row>
 								</div>
-               	</div>
               </Col>
             </Row>
           </Container>
@@ -548,8 +557,11 @@ export default function Rolly() {
       ) : (
         <h1>loading</h1>
 				)}
-			<audio id="timerSound" controls autoplay hidden>
+			<audio id="timerSound" controls autoplay loop hidden>
   <source src={`${window.location.origin}/assets/timer.mp3`} type="audio/mp3"/>
+			</audio>
+			<audio id="spinSound" controls autoplay loop hidden>
+  <source src={`${window.location.origin}/assets/spin.mp3`} type="audio/mp3"/>
 </audio>
     </div>
   );
