@@ -437,7 +437,43 @@ export default function Rolly() {
 											</div>
 										</Col>
 									</Row>
-									 <div className="hide-in-small mt-3">
+									<div className="hide-in-small mt-3">
+									{/* Scoring */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Scoring</h6>
+												<ol>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+									{/* rules */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Rules</h6>
+												<ol>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+								</div>
+                <div className="hide-in-small">
                   <Row>
                     <Col style={{padding:0, margin:0}}>
                       <Spinner
