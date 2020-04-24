@@ -15,13 +15,19 @@
 
 }
 
+.score-boxes {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
 .roll {
   text-align: center;
 
   height: 14.8vh;
   width: 100%;
   border: 10px solid;
-  border-image: linear-gradient(30deg,
+  border-image: linear-gradient(180deg,
       #faf282 0%,
       #a06b21 50%,
       #d8bf5c 100%,

@@ -142,10 +142,6 @@ export default function Rolly() {
     }
   };
 
-  document.getElementById(
-    "root"
-  ).style.backgroundImage = `url("${window.location.origin}/assets/rolly/bg.png")`;
-
   const getRow = (i) => {
     return data
       .map((col) => {
