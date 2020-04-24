@@ -2,6 +2,34 @@
   display: none;
 }
 
+#inner-spin {
+  height: 12vh;
+  width: 100%;
+  line-height: 12vh;
+  text-align: center;
+  color: orange;
+  background-color: black;
+  font-family: Dotted;
+  font-size: 5rem;
+
+
+}
+
+.roll {
+  text-align: center;
+
+  height: 14.8vh;
+  width: 100%;
+  border: 10px solid;
+  border-image: linear-gradient(30deg,
+      #faf282 0%,
+      #a06b21 50%,
+      #d8bf5c 100%,
+      #a36d25);
+  border-image-slice: 1;
+
+}
+
 
 @media screen and (max-width: 768px) {
   .hide-in-large {
