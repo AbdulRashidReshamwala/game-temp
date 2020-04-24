@@ -367,7 +367,7 @@ export default function Rolly() {
                     ></Spinner>
                   </Col>
 									<div className="ml-auto mt-1"> 
-										 <Col  >
+                  <Col style={{ padding: 0, margin: 0 }} >
                     <Spinner
 											spining={true}
 											result={index}
@@ -437,7 +437,7 @@ export default function Rolly() {
 											</div>
 										</Col>
 									</Row>
-									<div className="hide-in-small mt-3">
+									 <div className="hide-in-small mt-3">
                   <Row>
                     <Col style={{padding:0, margin:0}}>
                       <Spinner
@@ -536,6 +536,8 @@ export default function Rolly() {
 											</div>
                   </Row>
                 </div>
+							
+									<div className="hide-in-small mt-3">
 									{/* Scoring */}
 									<Row>
 										<Col>
@@ -569,8 +571,9 @@ export default function Rolly() {
 												</ol>
 											</div>
 										</Col>
-									</Row>
+										</Row>
 								</div>
+               	</div>
               </Col>
             </Row>
           </Container>
