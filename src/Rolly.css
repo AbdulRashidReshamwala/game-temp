@@ -11,8 +11,7 @@
   background-color: black;
   font-family: Dotted;
   font-size: 5rem;
-
-
+  z-index: -1;
 }
 
 .score-boxes {
@@ -22,6 +21,7 @@
 }
 
 .roll {
+  z-index: 1;
   text-align: center;
   height: 14.8vh;
   width: 100%;

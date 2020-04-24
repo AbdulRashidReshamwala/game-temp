@@ -298,10 +298,7 @@ export default function Rolly() {
                                 <Image
                                   fluid
                                   src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                  style={{
-                                    height: "7vh",
-                                    width: "100%",
-                                  }}
+                                
                                 />
                               </div>
                             </div>
@@ -317,10 +314,7 @@ export default function Rolly() {
                                 <Image
                                   fluid
                                   src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                  style={{
-                                    height: "5vh",
-                                    width: "100%",
-                                  }}
+															
                                 />
                               </div>
                             </div>
@@ -437,45 +431,10 @@ export default function Rolly() {
 											</div>
 										</Col>
 									</Row>
-									<div className="hide-in-small mt-3">
-									{/* Scoring */}
-									<Row>
-										<Col>
-											<div
-												className="rules"
-												style={{ textAlign: "left", marginTop: "1.3vh" }}
-											>
-												<h6>Scoring</h6>
-												<ol>
-													<li>Test</li>
-													<li>Test</li>
-													<li>Test</li>
-													<li>Test</li>
-												</ol>
-											</div>
-										</Col>
-									</Row>
-									{/* rules */}
-									<Row>
-										<Col>
-											<div
-												className="rules"
-												style={{ textAlign: "left", marginTop: "1.3vh" }}
-											>
-												<h6>Rules</h6>
-												<ol>
-													<li>Rules</li>
-													<li>Rules</li>
-													<li>Rules</li>
-													<li>Rules</li>
-												</ol>
-											</div>
-										</Col>
-									</Row>
-								</div>
-                <div className="hide-in-small">
+									
+                <div className="hide-in-small mt-3">
                   <Row>
-                    <Col style={{padding:0, margin:0}}>
+                    <Col lg={4} style={{padding:0, margin:0}}>
                       <Spinner
                         spining={spinning}
                         result={index !== -1 ? answers[index].row : 0}
@@ -491,11 +450,8 @@ export default function Rolly() {
                                 >
                                   <Image
                                     fluid
-                                    src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                    style={{
-                                      height: "12vh",
-                                      width: "100%",
-                                    }}
+																		src={`${window.location.origin}/assets/rolly/images/${item}`}
+																		 style={{height:'11vh'}}
                                   />
                                 </div>
                               </div>
@@ -505,10 +461,7 @@ export default function Rolly() {
                                   <Image
                                     fluid
                                     src={`${window.location.origin}/assets/rolly/images/${item}`}
-                                    style={{
-                                      height: "12vh",
-                                      width: "100%",
-                                    }}
+                                  style={{height:'11vh'}}
                                   />
                                 </div>
                               </div>
@@ -517,7 +470,7 @@ export default function Rolly() {
                         )}
                       ></Spinner>
                     </Col>
-                    <Col style={{padding:0, margin:0}}>
+											<Col lg={4}style={{padding:0, margin:0}}>
                       <Spinner
                         spining={spinning}
                         result={index !== -1 ? index : 0}
@@ -529,14 +482,14 @@ export default function Rolly() {
                               <div className="roll">
                                 <div
                                   id="inner-spin"
-                                  style={{ filter: "blur(10px)" }}
+                                  style={{ filter: "blur(10px)", fontSize:'3rem' }}
                                 >
                                   {item.number}
                                 </div>
                               </div>
                             ) : (
                               <div className="roll">
-                                <div id="inner-spin">{item.number}</div>
+                                <div id="inner-spin" style={{fontSize:'3rem' }}>{item.number}</div>
                               </div>
                             )}
                           </>
@@ -544,7 +497,7 @@ export default function Rolly() {
                       ></Spinner>
 											</Col>
 											<div className="ml-auto mt-2">
-												<Col>
+												<Col lg={3} style={{padding:0, margin:0}}>
                       <Spinner
 											spining={true}
 											result={index}
