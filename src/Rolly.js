@@ -368,6 +368,7 @@ export default function Rolly() {
                   </Col>
 									<div className="ml-auto mt-1"> 
 										 <Col  >
+                  <Col style={{ padding: 0, margin: 0 }} >
                     <Spinner
 											spining={true}
 											result={index}
@@ -378,6 +379,7 @@ export default function Rolly() {
 													style={{
 														fontFamily: "Sans-serif",
 														border: '2px solid goldenrod',
+														border: '2px solid orange',
 														backgroundColor:'black',
 														fontSize: "3rem",
 														height: "12vh",
@@ -438,6 +440,42 @@ export default function Rolly() {
 										</Col>
 									</Row>
 									<div className="hide-in-small mt-3">
+									{/* Scoring */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Scoring</h6>
+												<ol>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+													<li>Test</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+									{/* rules */}
+									<Row>
+										<Col>
+											<div
+												className="rules"
+												style={{ textAlign: "left", marginTop: "1.3vh" }}
+											>
+												<h6>Rules</h6>
+												<ol>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+													<li>Rules</li>
+												</ol>
+											</div>
+										</Col>
+									</Row>
+								</div>
+                <div className="hide-in-small">
                   <Row>
                     <Col style={{padding:0, margin:0}}>
                       <Spinner
