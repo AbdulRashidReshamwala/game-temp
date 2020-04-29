@@ -284,7 +284,8 @@ export default function Rolly() {
                   speed={100}
                   data={imgs}
                   draw={(item) => (
-                    <>
+                    <div className="ledborder" style={{width:'100%', borderWidth:'10px'}}>
+                      <>
                       {spinning ? (
                         <div className="roll" style={{ width: "13vh" }}>
                           <div
@@ -310,6 +311,7 @@ export default function Rolly() {
                         </div>
                       )}
                     </>
+                    </div>
                   )}
                 ></Spinner>
               </Col>
@@ -320,7 +322,9 @@ export default function Rolly() {
                   speed={100}
                   data={answers}
                   draw={(item) => (
-                    <>
+                    <div className="ledborder" style={{
+                      width: '100%', borderWidth:'10px'}}>
+                        <>
                       {spinning ? (
                         <div className="roll" style={{ width: "13vh" }}>
                           <div
@@ -341,6 +345,7 @@ export default function Rolly() {
                         </div>
                       )}
                     </>
+                  </div>
                   )}
                 ></Spinner>
               </Col>
@@ -434,14 +439,15 @@ export default function Rolly() {
 
               <div className="hide-in-small mt-3">
                 <Row>
-                  <Col lg={4} style={{ padding: 0, margin: 0 }}>
+                  <Col lg={4} >
                     <Spinner
                       spining={spinning}
                       result={index !== -1 ? answers[index].row : 0}
                       speed={100}
                       data={imgs}
                       draw={(item) => (
-                        <>
+                        <div className={spinning?"ledborder":"ledborder-stop"}>
+                           <>
                           {spinning ? (
                             <div className="roll">
                               <div
@@ -467,17 +473,19 @@ export default function Rolly() {
                             </div>
                           )}
                         </>
+                       </div>
                       )}
                     ></Spinner>
                   </Col>
-                  <Col lg={4} style={{ padding: 0, margin: 0 }}>
+                  <Col lg={4}>
                     <Spinner
                       spining={spinning}
                       result={index !== -1 ? index : 0}
                       speed={100}
                       data={answers}
                       draw={(item) => (
-                        <>
+                        <div className={spinning?"ledborder":"ledborder-stop"}>
+                           <>
                           {spinning ? (
                             <div className="roll">
                               <div
@@ -498,10 +506,11 @@ export default function Rolly() {
                             </div>
                           )}
                         </>
+                       </div>
                       )}
                     ></Spinner>
                   </Col>
-                  <div className="ml-auto mt-2">
+                  <div className="ml-auto mt-4">
                     <Col lg={3} style={{ padding: 0, margin: 0 }}>
                       <Spinner
                         spining={true}
