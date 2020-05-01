@@ -33,6 +33,80 @@
 
 }
 
+.ledborder {
+  width: 150%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 18px;
+  -moz-border-image: url("./images/bulb.png") 34 round;
+  -webkit-border-image: url("./images/bulb.png") 34 round;
+  -o-border-image: url("./images/bulb.png") 34 round;
+  border-image: url("./images/bulb.png") 34 round;
+  animation: ledFlash 0.6s infinite;
+}
+
+.ledborder:before {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  z-index: 1;
+  width: 110%;
+  height: 110%;
+  box-sizing: border-box;
+}
+
+.ledborder-stop {
+  width: 150%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 18px;
+  -moz-border-image: url("./images/bulb.png") 34 round;
+  -webkit-border-image: url("./images/bulb.png") 34 round;
+  -o-border-image: url("./images/bulb.png") 34 round;
+  border-image: url("./images/bulb.png") 34 round;
+  animation: ledFlashstop 0.6s infinite;
+}
+
+.ledborder-stop:before {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  z-index: 1;
+  width: 110%;
+  height: 110%;
+  box-sizing: border-box;
+}
+
+
+@keyframes ledFlashstop {
+  50% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes ledFlash {
+  50% {
+    opacity: .5;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   .hide-in-large {
